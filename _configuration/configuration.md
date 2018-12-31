@@ -590,19 +590,19 @@ A useful trick is to let the compiler do the calculations for you and just suppl
 #define NEMA17_MOTOR_STEPS (NEMA17_FULL_STEPS * NEMA17_MICROSTEPS)
 #define PULLEY_PITCH 2.0
 #define PULLEY_TEETH 20.0
-#define Z_ROD_PITCH 0.8
+#define Z_ROD_PITCH 0.8         //standard pitch for M5 threaded rod
 
-#define WADE_PULLEY_TEETH 11.0
-#define WADE_GEAR_TEETH 45.0
-#define HOBBED_BOLT_DIAM 6.0
+#define WADE_PULLEY_TEETH 11.0  //set to 1 for direct-drive extruders
+#define WADE_GEAR_TEETH 45.0    //set to 1 for direct-drive extruders
+#define HOBBED_BOLT_DIAM 6.0    //6.75mm for standard MK8 drive gear, 10.25mm for MK7
 
 #define XY_STEPS (NEMA17_MOTOR_STEPS / (PULLEY_PITCH * PULLEY_TEETH))
 #define Z_STEPS (NEMA17_MOTOR_STEPS / Z_ROD_PITCH)
 #define WADE_GEAR_RATIO (WADE_GEAR_TEETH / WADE_PULLEY_TEETH)
-#define HOBBED_BOLD_CIRC (M_PI * HOBBED_BOLT_DIAM)
-#define WADE_E_STEPS (NEMA17_MOTOR_STEPS * WADE_GEAR_RATIO / HOBBED_BOLD_CIRC)
+#define HOBBED_BOLT_CIRC (M_PI * HOBBED_BOLT_DIAM)
+#define E_STEPS (NEMA17_MOTOR_STEPS * WADE_GEAR_RATIO / HOBBED_BOLT_CIRC)
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { XY_STEPS, XY_STEPS, Z_STEPS, ENG2_E_STEPS }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { XY_STEPS, XY_STEPS, Z_STEPS, E_STEPS }
 ```
 
 {% panel info Step Calculator %}
